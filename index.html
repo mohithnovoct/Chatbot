@@ -41,6 +41,7 @@
             display: none;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
 </head>
 <body>
     <h1>Topic Explainer</h1>
@@ -64,7 +65,7 @@
             
             const data = await response.json();
             const textBlock = data.explanation.find(block => block.type === "text");
-            resultDiv.innerText = textBlock ? textBlock.text : "No response received.";
+            resultDiv.innerHTML = textBlock ? marked.parse(textBlock.text) : "No response received.";
         }
     </script>
 </body>
