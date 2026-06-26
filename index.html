@@ -56,7 +56,7 @@
             resultDiv.style.display = "block";
             resultDiv.innerText = "Loading..."
 
-            const response = await fetch("https://topic-explainer-ai.onrender.com", {
+            const response = await fetch("https://topic-explainer-ai.onrender.com/explain", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({ topic: topic })
