@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -19,3 +21,7 @@ def explain_topic(request: TopicRequest):
     prompt = f"Explain this topic in simple terms: {request.topic}"
     response = llm.invoke([HumanMessage(content=prompt)])
     return {"topic": request.topic, "explanation": response.content}
+
+@app.get("/")
+def serve_frontend():
+    return FileResponse("index.html")
